@@ -3,6 +3,7 @@
 echo "hibernate local test start"
 
 LOCAL_TIDB_LOG="local_tidb_hibernate.log"
+TIDB_SERVER_PATH="${HOME}/GolandProjects/tidb/bin/tidb-server"
 
 echo "starting tidb-servers, log file: ${LOCAL_TIDB_LOG}"
 # using fast_config.toml config file
@@ -15,10 +16,10 @@ echo "tidb-server(PID: ${FAST_SERVER_PID}) started"
 
 trap 'kill ${FAST_SERVER_PID}' EXIT
 
-mysql -u root -h 127.0.0.1 -P 4001 < init.sql;
+mysql -u root -h 127.0.0.1 -P 4001 < init.sql
 
 # start test
-sh ./gradlew clean test -Pdb=tidb -DdbHost=localhost:4001 --stacktrace
+sh gradlew :hibernate-core:test -Pdb=tidb -DdbHost=localhost:4001 --stacktrace
 EXIT_CODE=$?
 
 # handle test results
