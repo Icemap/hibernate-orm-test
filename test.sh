@@ -7,7 +7,7 @@ HIBERNATE_TIDB_LOG="tidb_hibernate.log"
 
 # start tidb servers
 echo "starting tidb-servers, log file: ${HIBERNATE_TIDB_LOG}"
-${TIDB_SERVER_PATH} -config fast_config.toml -store unistore -path "" -lease 0s > ${HIBERNATE_TIDB_LOG} 2>&1 &
+${TIDB_SERVER_PATH} -config tidb_config.toml -store unistore -path "" -lease 0s > ${HIBERNATE_TIDB_LOG} 2>&1 &
 SERVER_PID=$!
 sleep 5
 echo "tidb-server(PID: ${SERVER_PID}) started"
