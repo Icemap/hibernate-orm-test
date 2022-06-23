@@ -1,23 +1,9 @@
 port = 4001
-lease = "0"
-path = "/tmp/fast_tidb"
-socket = ""
 
-# When create table, split a separated region for it. It is recommended to
-# turn off this option if there will be a large number of tables created.
-split-table = false
-
-# Whether new collations are enabled, as indicated by its name, this configuration entry take effect ONLY when a TiDB cluster bootstraps for the first time.
+# Enable new collation to make case-insensitive comparison work.
 new_collations_enabled_on_first_bootstrap = true
 
-[log]
-level = "error"
-
-[status]
-status-port = 9081
-
-[performance]
-stats-lease = "0"
-
-[prepared-plan-cache]
-enabled = true
+# Disable async-commit to make DDL run faster.
+[tikv-client.async-commit]
+safe-window = 0
+allowed-clock-drift = 0
