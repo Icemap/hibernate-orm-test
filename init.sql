@@ -9,4 +9,4 @@ set global time_zone = UTC;
 set global tidb_enable_async_commit = 0;
 set global tidb_enable_1pc = 0;
 
-CREATE DATABASE IF NOT EXISTS hibernate_orm_test collate=utf8mb4_general_ci;
+CREATE DATABASE IF NOT EXISTS hibernate_orm_test collate=utf8mb4_bin;
