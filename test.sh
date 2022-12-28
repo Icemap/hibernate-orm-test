@@ -19,7 +19,7 @@ trap 'kill ${SERVER_PID}' EXIT
 mysql -u root -h 127.0.0.1 -P 4001 < init.sql
 
 # start test
-gradle :hibernate-core:test -Pdb=tidb -DdbHost=localhost:4001 --stacktrace
+gradle :hibernate-core:test -Pdb=tidb -DdbHost=localhost:4001 --stacktrace -g gradle-user-home
 EXIT_CODE=$?
 
 # handle test results
